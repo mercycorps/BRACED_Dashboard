@@ -1,0 +1,40 @@
+*.log
+*.pot
+*.pyc
+#local.py
+# Python bytecode:
+*.py[co]
+
+# Packaging files:
+*.egg*
+
+# Editor temp files:
+*.swp
+*~
+
+# Sphinx docs:
+build
+
+# SQLite3 database files:
+*.db
+
+# Logs:
+*.log
+
+#virtualenv
+
+
+#allvritualenv
+venv/
+
+#conf
+
+#Misc.
+.idea/
+.DS_Store
+media/
+local.py
+dashboard/settings.py
+*.crt
+*.key
+error.log
