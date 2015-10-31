@@ -45,39 +45,6 @@ class CountryAdmin(admin.ModelAdmin):
     list_display = ('name', 'create_date', 'edit_date')
     display = 'Country'
 
-class Contact(models.Model):
-    name = models.CharField("Name", max_length=255, blank=True, null=True)
-    title = models.CharField("Title", max_length=255, blank=True, null=True)
-    city = models.CharField("City/Town", max_length=255, blank=True, null=True)
-    address = models.TextField("Address", max_length=255, blank=True, null=True)
-    email = models.CharField("Email", max_length=255, blank=True, null=True)
-    phone = models.CharField("Phone", max_length=255, blank=True, null=True)
-    country = models.ForeignKey(Country)
-    create_date = models.DateTimeField(null=True, blank=True)
-    edit_date = models.DateTimeField(null=True, blank=True)
-
-    class Meta:
-        ordering = ('country','name','title')
-        verbose_name_plural = "Contact"
-
-    #onsave add create date or update edit date
-    def save(self, *args, **kwargs):
-        if self.create_date == None:
-            self.create_date = datetime.now()
-        self.edit_date = datetime.now()
-        super(Contact, self).save()
-
-    #displayed in admin templates
-    def __unicode__(self):
-        return self.count + "-" + self.name
-
-
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ('name', 'country', 'create_date', 'edit_date')
-    display = 'Contact'
-    list_filter = ('create_date','country')
-    search_fields = ('name','country','title','city')
-
 
 class Program(models.Model):
     gaitid = models.CharField("GAITID", max_length=255, blank=True, unique=True)
